@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What JS can do</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header id="myHeader">
+        <button id="colorBtn">Random color!</button>
+        <button id="imgBtn">Change image!</button>
+    </header>
+
+    <main id="myMainElem">
+        <img src="images/quokka1.webp" alt="Quokka1" id="mainImg">
+    </main>
+
+    <footer>
+
+    </footer>
+    <script>
+        let mainE = document.getElementById("myMainElem")
+        let clrButton = document.getElementById("colorBtn")
+        let imgButton = document.getElementById("imgBtn")
+        let mainI = document.getElementById("mainImg")
+
+        //mainE.innerHTML = "<h1>Hello, World!</h1>"
+
+        let newHeader = document.createElement('h1')
+        newHeader.textContent = "Hello, World!"
+        mainE.insertBefore(newHeader, mainI)
+
+        function changeImage(){
+            console.log(mainI.src)
+
+            if( mainI.src.includes("quokka1") ){
+                console.log("Changing to quokka2")
+                mainI.src = "images/quokka2.jpg"
+            }
+            else{
+                console.log("Changing to quokka1")
+                mainI.src = "images/quokka1.webp"
+            }
+        }
+
+
+        imgButton.addEventListener("click", changeImage)
+        clrButton.addEventListener("click", function(){
+            let valueR = Math.floor( Math.random() * 255 )
+            let valueG = Math.floor( Math.random() * 255 )
+            let valueB = Math.floor( Math.random() * 255 )
+
+            console.log("Red: " + valueR)
+            console.log("Green: " + valueG)
+            console.log("Blue: " + valueB)
+
+            mainE.style.backgroundColor = "rgb(" + valueR + ", " + valueG + ", " + valueB + ")"
+        })
+    </script>
+</body>
+</html>
